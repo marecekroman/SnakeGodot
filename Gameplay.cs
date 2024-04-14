@@ -10,7 +10,7 @@ public partial class Gameplay : Node2D
 	private const string Down = "DOWN";
 
 	[Export]
-	public int ScreenWidth = 1024;  // These can be set from Godot's editor
+	public int ScreenWidth = 1024;
 	[Export]
 	public int ScreenHeight = 600;
 
@@ -23,7 +23,7 @@ public partial class Gameplay : Node2D
 	public Vector2 BerryPosition { get; private set; }
 	public string CurrentDirection { get; set; } = Right;
 
-	private double _moveDelay = 0.1f; // Delay in seconds between moves
+	private double _moveDelay = 0.1f;
 	private double _timeSinceLastMove = 0f;
 
 	public override void _Ready()
@@ -63,7 +63,7 @@ public partial class Gameplay : Node2D
 			HandleInput();
 			MoveSnake();
 			CheckCollision();
-			_timeSinceLastMove = 0f; // Reset the move timer
+			_timeSinceLastMove = 0f;
 		}
 	}
 
@@ -90,10 +90,11 @@ public partial class Gameplay : Node2D
 			case Right: newHead.X += 10; break;
 		}
 
-		SnakeBody.Insert(0, SnakeHead); // Store the current position before changing
+		// Store the current position before changing
+		SnakeBody.Insert(0, SnakeHead); 
 		SnakeHead = newHead;
 
-		if (SnakeHead == BerryPosition)
+		if (SnakeHead.DistanceTo(BerryPosition) < 10)
 		{
 			Score++;
 			BerryPosition = CreateBerry();
