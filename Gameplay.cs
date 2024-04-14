@@ -25,8 +25,21 @@ public partial class Gameplay : Node2D
 
 	private double _moveDelay = 0.1f;
 	private double _timeSinceLastMove = 0f;
+	
+	private Label _gameOverLabel;
+	private Button _resetButton;
 
 	public override void _Ready()
+	{
+		_gameOverLabel = GetNode<Label>("GameOverLabel");
+		_resetButton = GetNode<Button>("ResetButton");
+		// Connects the button press signal to the OnResetButtonPressed method
+		_resetButton.Connect("pressed", new Callable(this, nameof(OnResetButtonPressed)));
+
+		ResetGame();
+	}
+	
+	private void OnResetButtonPressed()
 	{
 		ResetGame();
 	}
@@ -42,6 +55,11 @@ public partial class Gameplay : Node2D
 		}
 		BerryPosition = CreateBerry();
 		QueueRedraw();
+		
+		
+		_gameOverLabel.Hide();
+		_resetButton.Hide();
+		SetProcess(true);
 	}
 
 	private Vector2 CreateBerry()
@@ -113,6 +131,7 @@ public partial class Gameplay : Node2D
 		{
 			IsGameOver = true;
 			GD.Print("Game Over! Score: ", Score);
+			GameOver();
 		}
 	}
 
@@ -124,5 +143,22 @@ public partial class Gameplay : Node2D
 		}
 		DrawRect(new Rect2(SnakeHead.X - 5, SnakeHead.Y - 5, 10, 10), Colors.Red);
 		DrawCircle(BerryPosition, 5, Colors.Red);
+		DrawBorders();
+	}
+	
+	private void DrawBorders()
+	{
+		Color borderColor = Colors.Red;
+		DrawLine(new Vector2(0, 0), new Vector2(ScreenWidth, 0), borderColor, 2);
+		DrawLine(new Vector2(0, ScreenHeight), new Vector2(ScreenWidth, ScreenHeight), borderColor, 2);
+		DrawLine(new Vector2(0, 0), new Vector2(0, ScreenHeight), borderColor, 2);
+		DrawLine(new Vector2(ScreenWidth, 0), new Vector2(ScreenWidth, ScreenHeight), borderColor, 2);
+	}
+	
+		private void GameOver()
+	{
+		_gameOverLabel.Show();
+		_resetButton.Show();
+		SetProcess(false);
 	}
 }

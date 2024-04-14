@@ -1,6 +1,60 @@
-[gd_scene load_steps=2 format=3 uid="uid://ceqdhy5tky0qf"]
+[gd_scene load_steps=5 format=3 uid="uid://ceqdhy5tky0qf"]
 
 [ext_resource type="Script" path="res://Gameplay.cs" id="1_b0qrh"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_pgtd3"]
+line_spacing = 5.0
+font_size = 80
+font_color = Color(0.8, 0, 0, 1)
+outline_size = 5
+outline_color = Color(1, 0.0235294, 0.101961, 1)
+
+[sub_resource type="Theme" id="Theme_j0qkk"]
+
+[sub_resource type="FontFile" id="FontFile_7t66f"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/60/0 = Vector2(0, 0)
+cache/0/60/0/ascent = 0.0
+cache/0/60/0/descent = 0.0
+cache/0/60/0/underline_position = 0.0
+cache/0/60/0/underline_thickness = 0.0
+cache/0/60/0/scale = 1.0
+cache/0/60/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/60/0/kerning_overrides/60/0 = Vector2(0, 0)
+
 [node name="Gameplay" type="Node2D"]
 script = ExtResource("1_b0qrh")
+
+[node name="GameOverLabel" type="Label" parent="."]
+visible = false
+anchors_preset = -1
+anchor_left = 500.0
+anchor_top = 500.0
+anchor_right = 500.0
+anchor_bottom = 500.0
+offset_right = 1022.0
+offset_bottom = 599.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_pgtd3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResetButton" type="Button" parent="."]
+visible = false
+offset_left = 422.0
+offset_top = 373.0
+offset_right = 648.0
+offset_bottom = 462.0
+theme = SubResource("Theme_j0qkk")
+theme_override_fonts/font = SubResource("FontFile_7t66f")
+theme_override_font_sizes/font_size = 60
+text = "Reset"
+icon_alignment = 1
