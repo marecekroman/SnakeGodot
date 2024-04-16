@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ceqdhy5tky0qf"]
 
-[ext_resource type="Script" path="res://Gameplay.cs" id="1_b0qrh"]
+[ext_resource type="Script" path="res://GameController.cs" id="1_6lqkf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pgtd3"]
 line_spacing = 5.0
@@ -28,10 +28,11 @@ cache/0/60/0/kerning_overrides/16/0 = Vector2(0, 0)
 cache/0/60/0/kerning_overrides/60/0 = Vector2(0, 0)
 
 [node name="Gameplay" type="Node2D"]
-script = ExtResource("1_b0qrh")
+script = ExtResource("1_6lqkf")
 
 [node name="GameOverLabel" type="Label" parent="."]
 visible = false
+clip_contents = true
 anchors_preset = -1
 anchor_left = 500.0
 anchor_top = 500.0
@@ -48,13 +49,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ResetButton" type="Button" parent="."]
-visible = false
-offset_left = 422.0
-offset_top = 373.0
-offset_right = 648.0
-offset_bottom = 462.0
+clip_contents = true
+offset_left = 365.0
+offset_top = 408.0
+offset_right = 663.0
+offset_bottom = 497.0
 theme = SubResource("Theme_j0qkk")
 theme_override_fonts/font = SubResource("FontFile_7t66f")
 theme_override_font_sizes/font_size = 60
-text = "Reset"
+text = "New Game"
 icon_alignment = 1

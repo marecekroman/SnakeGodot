@@ -1,2 +1,3 @@
-res://node.tscn
-res://Gameplay.cs
+res://Main.tscn
+res://GameController.cs
+res://GameModel.cs
