@@ -1,3 +1,6 @@
+//This project is done by Roman Marecek for Tomas Bata University in Zlin, Czech Republic
+//This code is refactored and modified fom the original code from https://codereview.stackexchange.com/questions/127515/first-c-program-snake-game
+
 using Godot;
 using System;
 
@@ -8,6 +11,8 @@ public partial class GameController : Node
 	private Label gameOverLabel;
 	private Button restartButton;
 	private string currentDirection = "RIGHT";
+	
+	//Delay for playable speed.
 	private double moveDelay = 0.1;
 	private double timeSinceLastMove = 0;
 
@@ -32,7 +37,6 @@ public partial class GameController : Node
 	{
 		if (model.IsGameOver)
 		{
-			GD.Print("Game Over! Score: ", model.Score);
 			UpdateGameUI();
 			return;
 		}
@@ -75,6 +79,7 @@ public partial class GameController : Node
 
 	private void HandleInput()
 	{
+		// Check if a key is pressed and if so, update the direction based on arrow keys.
 		if (Input.IsActionPressed("ui_up") && currentDirection != "DOWN")
 			currentDirection = "UP";
 		else if (Input.IsActionPressed("ui_down") && currentDirection != "UP")

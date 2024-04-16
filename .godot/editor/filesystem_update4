@@ -1,3 +1,4 @@
 res://Main.tscn
 res://GameController.cs
 res://GameModel.cs
+res://GameView.cs
