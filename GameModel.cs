@@ -32,7 +32,8 @@ public partial class GameModel
 	{
 		SnakeHead = new Vector2(screenWidth / 2, screenHeight / 2);
 		SnakeBody.Clear();
-		SnakeBody.Add(SnakeHead);  
+		SnakeBody.Add(SnakeHead);
+		Score = 5;
 		
 		// Initialize the snake body based on the initial score.
 		for (int i = 1; i < Score; i++) {
